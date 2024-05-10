@@ -3,6 +3,7 @@ References:
   * Using nextflow on HPC https://lescailab.unipv.it/guides/eos_guide/use_nextflow.html
   * Nextflow channel cheatsheet https://github.com/danrlu/Nextflow_cheatsheet/blob/main/nextflow_cheatsheet.pdf
   * https://github.com/danrlu/nextflow_cheatsheet
+  * https://training.nextflow.io/hello_nextflow/02_hello_world/
     
 ### Project directory
   * `${workflow.projectDir}`
@@ -24,6 +25,18 @@ References:
     * Don't use `publishDir "path", mode:'move'` unless there's no following process that uses the output file. This moves the output file away from the working directory so it can't be used as an input for another process.
   * Run `nextflow clean -f` to clean up the working directories every once in a while.
     
+### Params
+  * `params` hold command line arguments. Used to specify options (e.g. filenames and processing options) at run time and not while writing the script.
+   * e.g.
+   * ```
+     output:
+         path 'output.txt'
+     ```
+     becomes
+     ```
+     output:
+         path params.output_file
+     ```
 ### Processes
   * Make debugging easier by making process names UPPERCASE.
     
