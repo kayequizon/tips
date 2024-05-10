@@ -2,6 +2,7 @@
 
 ## Data analysis starter pack
 ```
+# load packages
 import os
 import pandas as pd
 
