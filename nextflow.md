@@ -28,7 +28,7 @@ References:
 ### Params
   * `params` hold command line arguments. Used to specify options (e.g. filenames and processing options) at run time and not while writing the script.
    * e.g.
-   * ```
+     ```
      output:
          path 'output.txt'
      ```
@@ -37,6 +37,8 @@ References:
      output:
          path params.output_file
      ```
+   * Declare params by prepending the prefix `params.` to a variable name
+   * Specify the value of a param at the command line by prefixing teh param name with a double dash character (e.g. `--param`)
 ### Processes
   * Make debugging easier by making process names UPPERCASE.
     
