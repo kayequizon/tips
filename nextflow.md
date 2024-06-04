@@ -48,6 +48,18 @@ References:
 ### Conda
   * Nextflow automatically creates and activates the Conda environments given the dependencies specified by each process.
   * Specify the directory where the Conda environments are stored using the `conda.cacheDir` configuration property.
+  * Use an existing conda environment in a workflow by using the `conda` directive with the *directory* the env is in:
+
+    ```
+    process foo {
+    conda '/path/to/an/existing/env/directory'
+
+    '''
+    your_command --here
+    '''
+}
+    ```
+    
 ### HPC/slurm
 Launch a nextflow workflow as an sbatch submission by writing a launch job script, e.g. `launch_nf.job`
 ```
