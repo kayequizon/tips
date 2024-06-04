@@ -45,6 +45,9 @@ References:
 ### Channels and items
   * Channels are the input type for processes
 
+### Conda
+  * Nextflow automatically creates and activates the Conda environments given the dependencies specified by each process.
+  * Specify the directory where the Conda environments are stored using the `conda.cacheDir` configuration property.
 ### HPC/slurm
 Launch a nextflow workflow as an sbatch submission by writing a launch job script, e.g. `launch_nf.job`
 ```
