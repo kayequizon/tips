@@ -4,6 +4,15 @@ References:
   * Nextflow channel cheatsheet https://github.com/danrlu/Nextflow_cheatsheet/blob/main/nextflow_cheatsheet.pdf
   * https://github.com/danrlu/nextflow_cheatsheet
   * https://training.nextflow.io/hello_nextflow/02_hello_world/
+
+### Running nextflow
+  * `nextflow run main.nf nextflow.config -profile singularity`
+    * One dash (`-`) = commands to the workflow. e.g. `-profile`
+    * Two dashes (`--`) = commands to the param. e.g. `--input` --> `params.input` in `main.nf` 
+  * Main basic nextflow files
+    * `main.nf` - workflow. Can contain your processes and workflow.
+    * `nextflow.config` - config file. Can contain instructions for how to handle resources (e.g. on HPC), container usage (e.g. singularity, apptainer, docker), and executor (e.g. slurm)
+  * 
     
 ### Project directory
   * `${workflow.projectDir}`
@@ -38,12 +47,18 @@ References:
          path params.output_file
      ```
    * Declare params by prepending the prefix `params.` to a variable name
-   * Specify the value of a param at the command line by prefixing teh param name with a double dash character (e.g. `--param`)
+   * Specify the value of a param at the command line by prefixing the param name with a double dash character (e.g. `--param`)
 ### Processes
   * Make debugging easier by making process names UPPERCASE.
     
 ### Channels and items
   * Channels are the input type for processes
+  * Channel inputs:
+    * `val` = string
+    * `path` = file
+  * Channel outputs:
+    * `stdout` = print to terminal
+    * `path` = file
 
 ### Conda
   * Nextflow automatically creates and activates the Conda environments given the dependencies specified by each process.
@@ -79,4 +94,18 @@ nextflow -C ${CONFIG} run ${PIPELINE}
 and then running it
 ```
 sbatch -p NMLResearch -c 1 --mem=4G launch_nf.job $NFPIPELINEPATH $NFCONFIGPATH
+```
+  * There's another way using `nextflow.config`:
+```
+process.executor: 'slurm'
+```
+or e.g.
+```
+process {
+        executor = 'slurm'
+        queue = 'PARTITION'
+        memory = '4 GB'
+        time = '24 h'
+        cpus = 1
+    }
 ```
