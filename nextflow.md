@@ -8,11 +8,12 @@ References:
 ### Running nextflow
   * `nextflow run main.nf nextflow.config -profile singularity`
     * One dash (`-`) = commands to the workflow. e.g. `-profile`
-    * Two dashes (`--`) = commands to the param. e.g. `--input` --> `params.input` in `main.nf` 
+    * Two dashes (`--`) = commands to the param. e.g. `--input` --> `params.input` in `main.nf`
+    * When developing, use `-resume` to pick back up from where changes were made. (Faster and more efficient use of resources.)
   * Main basic nextflow files
     * `main.nf` - workflow. Can contain your processes and workflow.
     * `nextflow.config` - config file. Can contain instructions for how to handle resources (e.g. on HPC), container usage (e.g. singularity, apptainer, docker), and executor (e.g. slurm)
-  * 
+   
     
 ### Project directory
   * `${workflow.projectDir}`
