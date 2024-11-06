@@ -10,3 +10,10 @@
 ```
 sed -i 's/\r//g' [FILE]
 ```
+# slurm
+
+`sinfo -o "%n %C %m"`
+list available nodes (`%n`) with cpus (`%C`) and memory (`%m`)
+
+`srun -p PARTITION -c CORES --mem=MEM --pty bash`
+interactive node
