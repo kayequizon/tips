@@ -10,6 +10,11 @@
 ```
 sed -i 's/\r//g' [FILE]
 ```
+
+### grep for more than one pattern
+```
+grep -E 'pattern1|pattern2' file
+```
 # slurm
 
 `sinfo -o "%n %C %m"`
